@@ -1,12 +1,45 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import * as React from "react";
+import * as ReactDom from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+  Outlet,
+} from "react-router-dom";
+import './App.css';
+import Home from './routes/Home';
+import Test from './routes/TestPage';
+import Sidebar from "./components/Sidebar";
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+function AppLayout() {
+  return (
+  <>
+    <Sidebar />
+    <Outlet />
+  </>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    element: <AppLayout/>,
+    children: [
+      {
+        path: "/",
+        element: <Home/>
+      },
+      {
+        path: "test",
+        element: <Test/>
+      }
+    ]
+  }
+]);
+
+ReactDom.createRoot(document.getElementById("root")!).render(
+  <RouterProvider router={router} />
+);
 
 // Use contextBridge
 window.ipcRenderer.on('main-process-message', (_event, message) => {
