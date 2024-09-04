@@ -3,11 +3,12 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import { Link } from 'react-router-dom';
-import './Sidebar.css';
+import '../App.css';
 
 function Sidebar() {
     const [state, updateState] = useState(0);
 
+    //Test function to see if buttons are registering
     function testClick() {
         updateState(state + 1);
     }
@@ -16,14 +17,17 @@ function Sidebar() {
         <>
             <IconContext.Provider value={{color: 'undefined'}}>
                 <nav className='sidebar'>
-                    <ul>
-                        <li className='home-selection' onClick={testClick}>
-                            <Link to='/' className='home-page'>
-                                <AiIcons.AiFillHome /> Home
+                    <ul className='sidebar-items'>
+                        <li className='project-name'>
+                            Project Name
+                        </li>
+                        <li className='nav-text' onClick={testClick}>
+                            <Link to='/'>
+                                Home
                             </Link>
                         </li>
-                        <li className='test-selection'>
-                            <Link to='/test' className='home-page'>
+                        <li className='nav-text'>
+                            <Link to='/template'>
                                 Test
                             </Link>
                         </li>

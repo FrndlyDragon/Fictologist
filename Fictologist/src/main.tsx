@@ -10,6 +10,7 @@ import {
 import './App.css';
 import Home from './routes/Home';
 import Test from './routes/TestPage';
+import Template from './routes/TemplatePage';
 import Sidebar from "./components/Sidebar";
 
 function AppLayout() {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "test",
         element: <Test/>
+      },
+      {
+        path: "template",
+        element: <Template/>
       }
     ]
   }
