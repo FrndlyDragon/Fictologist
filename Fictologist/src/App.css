@@ -8,51 +8,92 @@
 .home,
 .template {
     display: flex;
+    color:#6c6c6c;
     align-items: center;
+    justify-content: center;
+    padding: 0vh 0vw 0vh 20vw;
+}
+
+.page-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     justify-content: center;
 }
 
 .sidebar {
     width: 20vw;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 0;
+    top: 20%;
     left: 0;
-    background-color: darkgoldenrod;
+    background-color: #b8860b;
+    overflow-y: auto;
+}
+
+.project-name {
+    width: 20vw;
+    height: 20vh;
+    background-color: #292721;
+    color: #d8d8d8;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.project-name p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .sidebar-items {
-    /* background-color: rgb(255, 93, 93);  Test Purposes */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     list-style-type: none;
     margin: 0;
     padding: .5vh 0vw 0vh 0vw;
-    width: 90%;
-    
-}
-
-.project-name {
-    color: #242424;
-    font-size: 1.5em;
-    display: flex;
-    align-items: center;
-    padding: 1em 16px 1em;
+    width: 100%;
 }
 
 .nav-text {
-    /*
-    background-color: rgb(152, 152, 152);
-    */
     width: 100%;
     padding: 0.25em 0px 0.25em 0px;
 
 }
 
-.nav-text a {
+.nav-text a, .menu-text {
+    text-decoration: none;
+    color: #242424;
+    font-size: 1em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 16px 1em;
+}
+
+.nav-text a:hover, .sub-text a:hover, .menu-text:hover {
+    background-color: #000000;
+    color: #fff;
+}
+
+.sub-text {
+    background-color: rgb(152, 152, 152);
+    width: 100%;
+    padding: 0.25em 0px 0.25em 0px;
+}
+
+.sub-text a {
     text-decoration: none;
     color: #242424;
     font-size: 1em;
@@ -61,10 +102,119 @@
     display: flex;
     align-items: center;
     padding: 1em 16px 1em;
-    border-radius: 5px;
 }
 
-.nav-text a:hover {
-    background-color: #000000;
-    color: #fff;
+/* Search Bar */
+.search-bar {
+    background-color: white;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    left: 21%;
+    top: 0%;
+    width: 78%;
+    height: 5%;
+}
+
+.search-bar input {
+    width: 98%;
+    height: 70%;
+    border-radius: 0;
+    border-color: #00000000;
+}
+
+.search-icon {
+    width: 32px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.search-bar-exit {
+    width: 32px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.page-cover {
+    background-color: #bababa8e;
+    position: fixed;
+    align-items: center;
+    left: 20%;
+    top: 5%;
+    width: 80%;
+    height: 100%;
+}
+
+.search-bar-hide {
+    background-color: white;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    left: 21%;
+    top: 0%;
+    width: 78%;
+    height: 5%;
+}
+
+.search-bar-hide input {
+    width: 98%;
+    height: 100%;
+    top: 0%;
+    border-radius: 0;
+    border-color: #00000000;
+}
+
+.search-bar-hide .page-cover {
+    display: none;
+}
+
+.search-bar-hide .search-bar-exit {
+    width: 4%;
+    height: 100%;
+    display: none;
+}
+
+.search-icon:active {
+    background-color: #f0f0f0;
+}
+
+.search-bar-exit:active {
+    background-color: #f0f0f0;
+}
+
+/* Add Button */
+.add-button {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 90%;
+    right: 2.5%;
+}
+
+.add-button button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border-color: rgba(255, 255, 255, 0);
+}
+
+/* Scroll Bar Custom */
+::-webkit-scrollbar {
+    width: 1vw;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #916b09;
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #6d5007;
 }

@@ -11,13 +11,21 @@ import './App.css';
 import Home from './routes/Home';
 import Test from './routes/TestPage';
 import Template from './routes/TemplatePage';
+import AddPage from "./routes/AddPage";
 import Sidebar from "./components/Sidebar";
+import AddButton from "./components/AddButton";
+import SearchBar from "./components/SearchBar";
 
 function AppLayout() {
   return (
   <>
-    <Sidebar />
-    <Outlet />
+    <div className="page-layout">
+      <Sidebar />
+      <Outlet />
+    </div>
+
+    <AddButton />
+    <SearchBar />
   </>
   );
 };
@@ -37,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "template",
         element: <Template/>
+      },
+      {
+        path: "add",
+        element: <AddPage/>
       }
     ]
   }
