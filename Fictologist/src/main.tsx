@@ -17,11 +17,12 @@ import AddButton from "./components/AddButton";
 import SearchBar from "./components/SearchBar";
 
 function AppLayout() {
+
   return (
-  <>
+    <>
     <div className="page-layout">
       <Sidebar />
-      <Outlet />
+      <Outlet/>
     </div>
 
     <AddButton />

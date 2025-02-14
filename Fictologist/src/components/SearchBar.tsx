@@ -22,7 +22,7 @@ function SearchBar() {
                 </span>
 
                 <input type='text'></input>
-                
+                <span className='search-bar-replace' />
                 <span className='search-icon' onClick={!searchBarOpen ? toggleSearchBar : searchContent}>
                     <CiIcons.CiSearch />
                 </span>

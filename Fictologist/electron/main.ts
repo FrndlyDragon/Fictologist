@@ -1,7 +1,8 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
+import fs from 'node:fs'
 
 const require = createRequire(import.meta.url)
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -68,3 +69,23 @@ app.on('activate', () => {
 })
 
 app.whenReady().then(createWindow)
+
+ipcMain.handle('write-json', async (event, data, fileName, filePath) => {
+  fs.writeFile(filePath + "/" + fileName, data, (error) => {
+    if (error) {
+      console.error(error);
+      throw error;
+    }
+  })
+});
+
+ipcMain.handle('read-json', async (event, filePath, fileID) => {
+  console.log('read from: ' + filePath);
+});
+
+ipcMain.handle("get-files", async (event, filePath) => {
+  console.log("read from: " + filePath);
+  var filesArr = fs.readdirSync(filePath);
+  console.log(filesArr);
+  return filesArr;
+});
