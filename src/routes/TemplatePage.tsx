@@ -11,7 +11,7 @@ function populateData(dataObj: string) {
 function getFile(fileNum: string) {
     var fileID = Number(fileNum);
 
-    window.ipcRenderer.invoke('read-json')
+    //window.ipcRenderer.invoke('read-json')
 }
 
 function Template() {
