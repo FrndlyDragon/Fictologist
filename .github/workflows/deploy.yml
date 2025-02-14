@@ -9,9 +9,6 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    defaults:
-      run: 
-        working-directory: ./Fictologist_Browser
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -36,9 +33,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    defaults:
-      run: 
-        working-directory: ./Fictologist_Browser
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
