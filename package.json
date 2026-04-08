@@ -1,0 +1,24 @@
+{
+  "name": "fictologist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Fictologist/electron/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrndlyDragon/Fictologist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/FrndlyDragon/Fictologist/issues"
+  },
+  "homepage": "https://github.com/FrndlyDragon/Fictologist#readme",
+  "dependencies": {
+    "electron": "^41.1.1"
+  }
+}

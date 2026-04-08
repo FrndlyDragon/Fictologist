@@ -24,3 +24,9 @@ release
 *.njsproj
 *.sln
 *.sw?
+
+# Specific Folders/Files
+venv/
+db/
+lore/
+__pycache__/

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fictologist</title>
+        <link rel="stylesheet", href="style.css">
+    </head>
+    <body>
+        <h2>Fictologist</h2>
+        <div id="chat"></div>
+        <input id="user-input" placeholder="The historian is listening..."/>
+        <button onclick="send()">Ask</button>
+
+        <!-- This script is temp and purely for immediately functionality. Has to be improved later and extracted to seperate file -->
+        <script>
+            async function send() {
+                const input = document.getElementById("user-input")
+                const chat = document.getElementById("chat")
+
+                const question = input.value
+                if (!question) return
+
+                chat.innerHTML += `<div><b>You:</b> ${question}</div>`
+
+                const res = await window.api.ask(question)
+
+                chat.innerHTML += `
+                    <div>
+                        <b>Historian:</b> ${res.answer}<br/>
+                        <small>Sources: ${res.sources.join(', ')}</small>
+                    </div>
+                `
+
+                input.value = ''
+                chat.scrollTop = chat.scrollHeight
+            }
+        </script>
+    </body>
+</html>
