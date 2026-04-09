@@ -23,10 +23,10 @@
 
                 const res = await window.api.ask(question)
 
+                console.log("Writing Response")
                 chat.innerHTML += `
                     <div>
                         <b>Historian:</b> ${res.answer}<br/>
-                        <small>Sources: ${res.sources.join(', ')}</small>
                     </div>
                 `
 

@@ -3,23 +3,27 @@ from pydantic import BaseModel
 
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
-from langchain_ollama import OllamaLLM
+from langchain_ollama import ChatOllama
 
 app = FastAPI()
 
 embeddings = OllamaEmbeddings(model="mistral")
-db = Chroma(persist_directory="./db", embedding_function=embeddings)
-llm = OllamaLLM(model="mistral")
+db = Chroma(collection_name="lore", persist_directory="./db", embedding_function=embeddings)
+llm = ChatOllama(model="mistral")
 
 historianPrompt = """
-You are a historian.
+You are a knowledgeable and wise historian.
 
 Rules:
-- Only use the provided context
+- Act as if you were a human
+- Be conversational 
+- Be polite
+- Be kind
+- Only use the provided context for information
 - Do NOT extrapolate or infer
 - If unknown, say:
   "This information is not recorded in the archives."
-- Always include source IDs
+- Reply in complete sentences
 """
 
 class Query(BaseModel):
@@ -28,7 +32,6 @@ class Query(BaseModel):
 @app.post("/ask")
 def ask(q: Query):
     results = db.similarity_search(q.question, k=3)
-
     context = "\n".join([r.page_content for r in results])
     sources = [r.metadata["id"] for r in results]
 
@@ -41,12 +44,15 @@ def ask(q: Query):
     Context:
     {context}
 
+    Question:
+    {q.question}
+
     Answer:
     """
 
-    response = llm(prompt)
-
+    response = llm.invoke(prompt)
+    print(response)
     return {
-        "answer": response,
+        "answer": response.content,
         "sources": sources
     }
