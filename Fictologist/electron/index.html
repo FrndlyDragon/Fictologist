@@ -3,36 +3,36 @@
     <head>
         <title>Fictologist</title>
         <link rel="stylesheet", href="style.css">
+        <script async src="functions.js"></script>
     </head>
     <body>
-        <h2>Fictologist</h2>
-        <div id="chat"></div>
-        <input id="user-input" placeholder="The historian is listening..."/>
-        <button onclick="send()">Ask</button>
+        <div id="sidebar">
+            <button>Documents</button>
+            <button>Historian</button>
 
-        <!-- This script is temp and purely for immediately functionality. Has to be improved later and extracted to seperate file -->
-        <script>
-            async function send() {
-                const input = document.getElementById("user-input")
-                const chat = document.getElementById("chat")
+            <hr>
 
-                const question = input.value
-                if (!question) return
+            <h2 id="projectName">Project</h2>
+        </div>
 
-                chat.innerHTML += `<div><b>You:</b> ${question}</div>`
+        <div id="main">
+            <div id="chatPage">
+                <h2>Fictologist</h2>
+                <div id="chat"></div>
+                <input id="user-input" placeholder="The historian is listening..."/>
+                <button onclick="send()">Ask</button>
+            </div>
 
-                const res = await window.api.ask(question)
+            <div id="entryPage">
+                <h2>Create Entry</h2>
+                <input id="project_input" placeholder="New Project"/>
+                <input id="entry_id" placeholder="New Entry"/>
+                <textarea id="entry_content" placeholder="A new story..."></textarea>
 
-                console.log("Writing Response")
-                chat.innerHTML += `
-                    <div>
-                        <b>Historian:</b> ${res.answer}<br/>
-                    </div>
-                `
+                <button onclick="addEntry()">Save Entry</button>
+            </div>
 
-                input.value = ''
-                chat.scrollTop = chat.scrollHeight
-            }
-        </script>
+        </div>
+
     </body>
 </html>
